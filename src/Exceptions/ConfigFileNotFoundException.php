@@ -1,5 +1,5 @@
 <?php
-namespace PhpBattlerite\PhpBattlerite\Exceptions;
+namespace guastallaigor\PhpBattlerite\Exceptions;
 
 /**
  * Class ConfigFileNotFoundException

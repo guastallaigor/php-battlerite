@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpBattlerite\PhpBattlerite\Exceptions;
+namespace guastallaigor\PhpBattlerite\Exceptions;
 
 use Exception as CoreException;
 

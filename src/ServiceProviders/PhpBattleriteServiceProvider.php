@@ -1,11 +1,10 @@
 <?php
 
-namespace PhpBattlerite\PhpBattlerite\ServiceProviders;
+namespace guastallaigor\PhpBattlerite\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
-use PhpBattlerite\PhpBattlerite\Contracts\SampleInterface;
-use PhpBattlerite\PhpBattlerite\Facades\SampleFacadeAccessor;
-use PhpBattlerite\PhpBattlerite\Sample;
+use guastallaigor\PhpBattlerite\Facades\PhpBattlerite;
+use guastallaigor\PhpBattlerite\Main;
 
 /**
  * Class PhpBattleriteServiceProvider
@@ -70,8 +69,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     private function implementationBindings()
     {
         $this->app->bind(
-            SampleInterface::class,
-            Sample::class
+            Main::class
         );
     }
 
@@ -92,14 +90,14 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     private function facadeBindings()
     {
         // Register 'phpbattlerite.say' instance container
-        $this->app['phpbattlerite.sample'] = $this->app->share(function ($app) {
-            return $app->make(Sample::class);
+        $this->app['phpbattlerite.phpbattlerite'] = $this->app->share(function ($app) {
+            return $app->make(Main::class);
         });
 
-        // Register 'Sample' Alias, So users don't have to add the Alias to the 'app/config/app.php'
+        // Register 'PhpBattlerite' Alias, So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('Sample', SampleFacadeAccessor::class);
+            $loader->alias('PhpBattlerite', PhpBattleriteFacede::class);
         });
     }
 

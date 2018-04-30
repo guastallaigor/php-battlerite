@@ -1,46 +1,55 @@
 {
-  "name": "guastallaigor/php-battlerite",
-  "description": "Easy PHP API to get all the data you need from the development Battlerite API",
-  "license": "MIT",
-  "keywords": [
-    "PHP",
-    "Battlerite"
-  ],
-  "authors": [
-    {
-      "name": "Igor Guastalla de Lima",
-      "email": "limaguastallaigor@gmail.com",
-      "homepage": "https://github.com/guastallaigor",
-      "role": "Front-end"
+    "name": "guastallaigor/php-battlerite",
+    "description": "Easy PHP API to get all the data you need from the development Battlerite API",
+    "license": "MIT",
+    "keywords": [
+        "PHP",
+        "Battlerite"
+    ],
+    "authors": [
+        {
+            "name": "Igor Guastalla de Lima",
+            "email": "limaguastallaigor@gmail.com",
+            "homepage": "https://github.com/guastallaigor"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/config": "5.2.*",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "mockery/mockery": "0.*",
+        "symfony/var-dumper": "2.*",
+        "helmich/phpunit-json-assert": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+        "guastallaigor\\PhpBattlerite\\": "src",
+        "PhpBattlerite\\Library\\": "src/library"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        "guastallaigor\\PhpBattlerite\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "minimum-stability": "stable",
+        "laravel": {
+            "providers": [
+                "guastallaigor\\PhpBattlerite\\ServiceProviders\\PhpBattleriteServiceProvider"
+            ],
+            "aliases": {
+                "PhpBattlerite": "guastallaigor\\PhpBattlerite\\Facedes\\PhpBattlerite"
+            }
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4.0",
-    "illuminate/config": "5.2.*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "4.*",
-    "mockery/mockery": "0.*",
-    "symfony/var-dumper": "2.*"
-  },
-  "autoload": {
-    "psr-4": {
-      "PhpBattlerite\\PhpBattlerite\\": "src",
-      "PhpBattlerite\\Library\\": "src/library"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "PhpBattlerite\\PhpBattlerite\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "test": "phpunit"
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
-    }
-  },
-  "minimum-stability": "stable"
 }

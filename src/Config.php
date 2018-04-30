@@ -1,9 +1,9 @@
 <?php
 
-namespace PhpBattlerite\PhpBattlerite;
+namespace guastallaigor\PhpBattlerite;
 
 use Illuminate\Config\Repository;
-use PhpBattlerite\PhpBattlerite\Exceptions\ConfigFileNotFoundException;
+use guastallaigor\PhpBattlerite\Exceptions\ConfigFileNotFoundException;
 
 /**
  * Class Config
@@ -16,7 +16,7 @@ class Config
     /**
      * Config file name
      */
-    CONST CONFIG_FILE_NAME = "nextpack";
+    private static $configFileName = "phpbattlerite";
 
     /**
      * @var  \Illuminate\Config\Repository
@@ -32,7 +32,7 @@ class Config
     {
         $configPath = $this->configurationPath();
 
-        $config_file = $configPath . '/' . self::CONFIG_FILE_NAME . '.php';
+        $config_file = $configPath . '/' . self::$configFileName . '.php';
 
         if (!file_exists($config_file)) {
             throw new ConfigFileNotFoundException();

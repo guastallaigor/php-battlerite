@@ -1,16 +1,19 @@
 <?php
 
-namespace PhpBattlerite\PhpBattlerite\Tests;
+namespace guastallaigor\PhpBattlerite\Tests;
 
-use PHPUnit_Framework_TestCase as PHPUnit;
+use Helmich\JsonAssert\JsonAssertions;
+use PHPUnit\Framework\TestCase as PHPUnit;
+
 
 /**
  * Class TestCase
  *
  * @author  Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
  */
-class TestCase extends PHPUnit
+abstract class TestCase extends PHPUnit
 {
+    use JsonAssertions;
 
     public function __construct()
     {
@@ -19,6 +22,7 @@ class TestCase extends PHPUnit
 
     public function setUp()
     {
+
         parent::setUp();
     }
 
@@ -26,5 +30,4 @@ class TestCase extends PHPUnit
     {
         parent::tearDown();
     }
-
 }

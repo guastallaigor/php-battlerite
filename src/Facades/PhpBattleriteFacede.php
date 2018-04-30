@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpBattlerite\PhpBattlerite\Facades;
+namespace guastallaigor\PhpBattlerite\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author  Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
  */
-class PhpBattlerite extends Facade
+class PhpBattleriteFacede extends Facade
 {
 
     /**
@@ -17,8 +17,8 @@ class PhpBattlerite extends Facade
      *
      * @return string
      */
-    protected static function getPhpBattlerite()
+    protected static function getPhpBattleriteFacede()
     {
-        return 'phpbattlerite.sample';
+        return 'phpbattlerite.main';
     }
 }
