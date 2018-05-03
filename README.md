@@ -4,7 +4,7 @@
 </div>
 
 <p align="center">
-    PHP Battlerite is an easy composer PHP API to get all the data you need from the <a href="https://developer.battlerite.com">Developer Battlerite APIM</a>
+    PHP Battlerite is an easy composer PHP API to get all the data you need from the <a href="https://developer.battlerite.com">Developer Battlerite API</a>
 </p>
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
