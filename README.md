@@ -3,10 +3,6 @@
     <h1>PHP Battlerite</h1>
 </div>
 
-> **Note:** I do not own the Developer Battlerite API.
-> I do not work with Stunlock Studios.
-> This is an unofficial project.
-
 <p align="center">
     PHP Battlerite is an easy composer PHP API to get all the data you need from the <a href="https://developer.battlerite.com">Developer Battlerite API</a>
 </p>
@@ -15,6 +11,14 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/build-status/master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE)
+
+> **Note:** I do not own the Developer Battlerite API.
+>
+> I do not work with Stunlock Studios.
+>
+> This is an unofficial project.
+>
+> This project uses the Developer Battlerite API with an unique key. You will must request one.
 
 ## Project directory
 
