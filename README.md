@@ -16,7 +16,7 @@
 > **Note:** I do not own the Developer Battlerite API.
 > I do not work with Stunlock Studios.
 > This is an unofficial project.
-> This project uses the Developer Battlerite API with an unique key. You will must request one.
+> This project uses the Developer Battlerite API with an unique key. **You will must request one**.
 
 ## Project directory
 
@@ -73,6 +73,7 @@ We welcome any type of contribution, not only code. You can help with:
 
 * [ ] Add all the requests available at [Developer Battlerite API](https://developer.battlerite.com).
 * [ ] Test on Laravel 5.5+.
+* [ ] Add 100% test coverage.
 * [ ] Make a full README.md.
 * [ ] Add Travis CI.
 * [ ] Publish package on packagist.
