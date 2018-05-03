@@ -20,21 +20,21 @@ class Main
     /**
      * API URL root of Battlerite.
      *
-     * @var string
+     * @var String
      */
     private static $apiUrl = "https://api.dc01.gamelockerapp.com/shards/global/";
 
     /**
      * Guzzle Client variable to send all requests.
      *
-     * @var string
+     * @var String
      */
     private $client;
 
     /**
      * API Key of your development battlerite account.
      *
-     * @String
+     * @var String
      */
     private $apiKey;
 
@@ -57,7 +57,8 @@ class Main
     /**
      * Method to set your API Key provided by your Battlerite development account.
      *
-     * @param [String] $apiKey
+     * @param String $apiKey
+     *
      * @return void
      */
     public function setAPIKey($apiKey)
@@ -104,8 +105,9 @@ class Main
     /**
      * Get a single player request.
      *
-     * @param [String] $id
-     * @return object
+     * @param String $id
+     *
+     * @return Object
      */
     public function getPlayer($id)
     {
@@ -115,10 +117,10 @@ class Main
     /**
      * Get a collection of players.
      *
-     * @param string $ids
-     * @param string $type
+     * @param String $ids
+     * @param String $type
      *
-     * @return object
+     * @return Object
      */
     public function getPlayers($ids, $type = 'playerIds')
     {
@@ -130,7 +132,8 @@ class Main
      * Get a collection of teams.
      *
      * @param array $filter
-     * @return object
+     *
+     * @return Object
      */
     public function getTeams($filter = [])
     {
@@ -140,7 +143,7 @@ class Main
     /**
      * Get Battlerite status.
      *
-     * @return object
+     * @return Object
      */
     public function getStatus()
     {
@@ -156,7 +159,8 @@ class Main
     /**
      * Function to handle unexpected errors.
      *
-     * @param [RequestException] $error
+     * @param RequestException $error
+     *
      * @return void
      */
     protected function statusCodeHandling($error)

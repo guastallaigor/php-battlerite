@@ -31,8 +31,6 @@ class Config
 
     /**
      * Config constructor.
-     *
-     * @param \Illuminate\Config\Repository $config
      */
     public function __construct()
     {
@@ -50,7 +48,7 @@ class Config
     /**
      * return the correct config directory path
      *
-     * @return  mixed|string
+     * @return mixed|string
      */
     private function configurationPath()
     {
