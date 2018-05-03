@@ -1,10 +1,10 @@
 <div align="center">
-    <img src="/assets/battlerite.png" width="128px">
+    <img src="src/assets/battlerite.png" width="128px">
     <h1>PHP Battlerite</h1>
 </div>
 
 <p align="center">
-    PHP Battlerite is an easy composer PHP API to get all the data you need from the [Developer Battlerite API](https://developer.battlerite.com).
+    PHP Battlerite is an easy composer PHP API to get all the data you need from the <a href="https://developer.battlerite.com">Developer Battlerite APIM</a>
 </p>
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
