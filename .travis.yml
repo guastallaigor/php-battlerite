@@ -11,13 +11,18 @@ matrix:
   allow_failures:
     - php: 7.0
     - php: hhvm
+  fast_finish: true
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer update --prefer-stable --no-interaction --prefer-source
+  - travis_retry composer install --prefer-source --no-interaction --dev
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
   - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+
+notifications:
+    on_success: never
+    on_failure: always
