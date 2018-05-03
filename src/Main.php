@@ -78,7 +78,7 @@ class Main
      */
     public function sendRequest($method, $request, $filter = [], $global = true)
     {
-        $url = self::$apiUrl .= $global ? $this->global . $request : $request;
+        $url = self::$apiUrl .= $global ? self::$global . $request : $request;
         $header = [
             "Authorization" => "Bearer " . $this->apiKey,
             "Accept" =>  "application/vnd.api+json"
