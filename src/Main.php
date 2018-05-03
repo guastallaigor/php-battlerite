@@ -18,14 +18,6 @@ use GuzzleHttp\Exception\RequestException;
 class Main
 {
     /**
-     * API URL root of Battlerite.
-     *
-     * @var string
-     */
-    private static $apiUrl = "https://api.dc01.gamelockerapp.com/";
-    private static $shardsGlobal = "shards/global/";
-
-    /**
      * Guzzle Client variable to send all requests.
      *
      * @var object<GuzzleHttp\Client>
@@ -78,10 +70,12 @@ class Main
      */
     public function sendRequest($method, $request, $filter = [], $global = true)
     {
-        $url = self::$apiUrl .= ($global ? self::$shardsGlobal . $request : $request);
+        $apiUrl = 'https://api.dc01.gamelockerapp.com/';
+        $shardsGlobal = 'shards/global/';
+        $url =  $apiUrl . ($global ?  $shardsGlobal . $request : $request);
         $header = [
-            "Authorization" => "Bearer " . $this->apiKey,
-            "Accept" =>  "application/vnd.api+json"
+            'Authorization' => 'Bearer ' . $this->apiKey,
+            'Accept' =>  'application/vnd.api+json'
         ];
 
         try {
@@ -89,15 +83,15 @@ class Main
                 $method,
                 $url,
                 [
-                    "query" => $filter,
-                    "connect_timeout" => 10,
-                    "headers" => $header,
+                    'query' => $filter,
+                    'headers' => $header,
                 ]
             );
 
             return json_decode($response->getBody()->getContents());
         } catch (RequestException $error) {
             $response = $this->statusCodeHandling($error);
+
             return $response;
         }
     }
@@ -168,8 +162,8 @@ class Main
     protected function statusCodeHandling($error)
     {
         $response = [
-            "statuscode" => $error->getResponse()->getStatusCode(),
-            "error" => $error->getResponse()->getBody()->getContents(),
+            'statuscode' => $error->getResponse()->getStatusCode(),
+            'error' => $error->getResponse()->getBody()->getContents(),
         ];
 
         return $response;
