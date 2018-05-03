@@ -22,8 +22,8 @@ class Main
      *
      * @var string
      */
-    private static $apiUrl = "https://api.dc01.gamelockerapp.com/shards/";
-    private static $global = "global/";
+    private static $apiUrl = "https://api.dc01.gamelockerapp.com/";
+    private static $global = "shards/global/";
 
     /**
      * Guzzle Client variable to send all requests.
