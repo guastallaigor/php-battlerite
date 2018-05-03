@@ -97,7 +97,6 @@ class Main
             return json_decode($response->getBody()->getContents());
         } catch (RequestException $error) {
             $response = $this->statusCodeHandling($error);
-            dd($response);
             return $response;
         }
     }
@@ -153,7 +152,9 @@ class Main
     public function getTelemetry()
     {
         $response = $this->sendRequest('GET', 'matches');
-        dd($response);
+        // need work
+
+        return $response;
     }
 
     /**
