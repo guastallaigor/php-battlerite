@@ -89,18 +89,14 @@ class Main
                 [
                     "query" => $filter,
                     "connect_timeout" => 10,
-                    "http_errors" => false,
                     "headers" => $header,
                 ]
             );
 
-            dd($response);
-
             return json_decode($response->getBody()->getContents());
         } catch (RequestException $error) {
-            $response = $this->StatusCodeHandling($error);
+            $response = $this->statusCodeHandling($error);
             dd($response);
-
             return $response;
         }
     }
@@ -119,11 +115,14 @@ class Main
     /**
      * Get a collection of players.
      *
-     * @param array $filter
+     * @param string $ids
+     * @param string $type
+     *
      * @return object
      */
-    public function getPlayers($filter = [])
+    public function getPlayers($ids, $type = 'playerIds')
     {
+        $filter = ['filter['. $type .']' => $ids];
         return $this->sendRequest('GET', 'players', $filter);
     }
 
@@ -164,7 +163,7 @@ class Main
     {
         $response = [
             "statuscode" => $error->getResponse()->getStatusCode(),
-            "error" => object_decode($e->getResponse()->getBody(true)->getContents()),
+            "error" => $error->getResponse()->getBody(true)->getContents(),
         ];
 
         return $response;
