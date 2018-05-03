@@ -9,8 +9,9 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/build-status/master)
+[![Scrutinizer Build Status](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/build-status/master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE)
+[![Travis Build Status](https://travis-ci.org/guastallaigor/php-battlerite.svg?branch=master)](https://travis-ci.org/guastallaigor/php-battlerite)
 
 > **Note:** I do not own the Developer Battlerite API.
 > I do not work with Stunlock Studios.
