@@ -27,7 +27,7 @@ class Main
     /**
      * Guzzle Client variable to send all requests.
      *
-     * @var array<GuzzleHttp\Client>
+     * @var object<GuzzleHttp\Client>
      */
     private $client;
 
