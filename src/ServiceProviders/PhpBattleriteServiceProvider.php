@@ -6,11 +6,17 @@ use Illuminate\Support\ServiceProvider;
 use guastallaigor\PhpBattlerite\Facades\PhpBattlerite;
 use guastallaigor\PhpBattlerite\Main;
 
-/**
- * Class PhpBattleriteServiceProvider
- *
- * @author  Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
- */
+ /**
+  * PHP-Battlerite easy API
+  *
+  * @category  Games
+  * @package   ServiceProviders
+  * MainServiceProvider class for this package
+  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+  * @copyright 2018 PHP Battlerite
+  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  * @link      https://github.com/guastallaigor/php-battlerite
+  */
 class PhpBattleriteServiceProvider extends ServiceProvider
 {
 
@@ -23,6 +29,8 @@ class PhpBattleriteServiceProvider extends ServiceProvider
 
     /**
      * Boot the package.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -64,7 +72,9 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Implementation Bindings
+     * Binding app to Main class.
+     *
+     * @return void
      */
     private function implementationBindings()
     {
@@ -75,30 +85,42 @@ class PhpBattleriteServiceProvider extends ServiceProvider
 
     /**
      * Publish the Config file from the Package to the App directory
+     *
+     * @return void
      */
     private function configPublisher()
     {
         // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
-        $this->publishes([
-            __DIR__ . '/Config/phpbattlerite.php' => config_path('phpbattlerite.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__ . '/Config/phpbattlerite.php' =>
+                    config_path('phpbattlerite.php')
+            ]
+        );
     }
 
     /**
-     * Facades Binding
+     * Binding app to the Facede.
+     *
+     * @return void
      */
     private function facadeBindings()
     {
         // Register 'phpbattlerite.say' instance container
-        $this->app['phpbattlerite.phpbattlerite'] = $this->app->share(function ($app) {
-            return $app->make(Main::class);
-        });
+        $this->app['phpbattlerite.phpbattlerite'] = $this->app->share(
+            function ($app) {
+                return $app->make(Main::class);
+            }
+        );
 
-        // Register 'PhpBattlerite' Alias, So users don't have to add the Alias to the 'app/config/app.php'
-        $this->app->booting(function () {
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('PhpBattlerite', PhpBattleriteFacede::class);
-        });
+        // Register 'PhpBattlerite' Alias,
+        // So users don't have to add the Alias to the 'app/config/app.php'
+        $this->app->booting(
+            function () {
+                $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+                $loader->alias('PhpBattlerite', PhpBattleriteFacede::class);
+            }
+        );
     }
 
     /**
@@ -113,10 +135,11 @@ class PhpBattleriteServiceProvider extends ServiceProvider
 
     /**
      * Registering Other Custom Service Providers (if you have)
+     *
+     * @return void
      */
     private function serviceProviders()
     {
         // $this->app->register('...\...\...');
     }
-
 }

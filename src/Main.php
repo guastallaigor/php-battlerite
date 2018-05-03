@@ -2,11 +2,19 @@
 
 namespace guastallaigor\PhpBattlerite;
 
-/**
- * Class PhpBattlerite
- *
- * @author  Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
- */
+use GuzzleHttp\Exception\RequestException;
+
+ /**
+  * PHP-Battlerite easy API
+  *
+  * @category  Games
+  * @package   src
+  * Main class
+  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+  * @copyright 2018 PHP Battlerite
+  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  * @link      https://github.com/guastallaigor/php-battlerite
+  */
 class Main
 {
     /**
@@ -60,27 +68,38 @@ class Main
     /**
      * Function that is going to make all the requests you need.
      *
-     * @param [String] $method
-     * @param [String] $request
+     * @param String $method
+     * @param String $request
      * @param array $filter
-     * @return json
+     *
+     * @return object
      */
     public function sendRequest($method, $request, $filter = [])
     {
+        $url = self::$apiUrl . $request;
+        $header = [
+            "Authorization" => "Bearer " . $this->apiKey,
+            "Accept" =>  "application/vnd.api+json"
+        ];
+
         try {
-            $url = self::$apiUrl . $request;
-            $header = [
-                "Authorization" => "Bearer " . $this->apiKey,
-                "Accept" =>  "application/vnd.api+json"
-            ];
-            $response = $this->client->request($method, $url, [
-                "query" => $filter,
-                "headers" => $header
-            ]);
+            $response = $this->client->request(
+                $method,
+                $url,
+                [
+                    "query" => $filter,
+                    "connect_timeout" => 10,
+                    "http_errors" => false,
+                    "headers" => $header,
+                ]
+            );
+
+            dd($response);
 
             return json_decode($response->getBody()->getContents());
         } catch (RequestException $error) {
             $response = $this->StatusCodeHandling($error);
+            dd($response);
 
             return $response;
         }
@@ -90,11 +109,49 @@ class Main
      * Get a single player request.
      *
      * @param [String] $id
-     * @return json
+     * @return object
      */
     public function getPlayer($id)
     {
         return $this->sendRequest('GET', 'players/' . $id);
+    }
+
+    /**
+     * Get a collection of players.
+     *
+     * @param array $filter
+     * @return object
+     */
+    public function getPlayers($filter = [])
+    {
+        return $this->sendRequest('GET', 'players', $filter);
+    }
+
+    /**
+     * Get a collection of teams.
+     *
+     * @param array $filter
+     * @return object
+     */
+    public function getTeams($filter = [])
+    {
+        return $this->sendRequest('GET', 'teams', $filter);
+    }
+
+    /**
+     * Get Battlerite status.
+     *
+     * @return object
+     */
+    public function getStatus()
+    {
+        return $this->sendRequest('GET', 'status');
+    }
+
+    public function getTelemetry()
+    {
+        $response = $this->sendRequest('GET', 'matches');
+        dd($response);
     }
 
     /**
@@ -107,51 +164,9 @@ class Main
     {
         $response = [
             "statuscode" => $error->getResponse()->getStatusCode(),
-            "error" => json_decode($e->getResponse()->getBody(true)->getContents()),
+            "error" => object_decode($e->getResponse()->getBody(true)->getContents()),
         ];
 
         return $response;
     }
-
-    // examples:
-
-    // $client = new \GuzzleHttp\Client(['base_uri' => 'https://maps.google.com/maps/api/geocode/']);
-    // $response = $client->request('GET', 'json', ['query' => [
-    //     'sensor' => false,
-    //     'address' => str_slug(sprintf('%s %s %s %s %s', $cedente->endereco, $cedente->bairro, $cedente->cidade, $cedente->uf, $cedente->cep), '+'),
-    //     'key' => 'AIzaSyBKJTMCtsbrICqo9_NTY05loUAfI_xmN9A'
-    // ]]);
-    // $address = json_decode($response->getBody()->getContents());
-
-    // return [
-    //     'endereco' => $cedente->endereco,
-    //     'bairro' => $cedente->bairro,
-    //     'cidade' => $cedente->cidade,
-    //     'uf' => $cedente->uf,
-    //     'cep' => $cedente->cep,
-    //     'latitude' => $address->results[0]->geometry->location->lat ?? null,
-    //     'longitude' => $address->results[0]->geometry->location->lng ?? null,
-    // ];
-
-    // protected function prepareAccessToken()
-    // {
-    //     // "Content-Type"=>"application/x-www-form-urlencoded;charset=UTF-8"
-    //     // . base64_encode()
-
-    //     try {
-    //         $value = ["grant_type" => "client_credentials"];
-    //         $header = [
-
-    //             ];
-    //         $response = $this->client->post($url, ['query' => $value,'headers' => $header]);
-    //         $result = json_decode($response->getBody()->getContents());
-
-    //         $this->accesstoken = $result->access_token;
-    //     }
-    //     catch (RequestException $e) {
-    //         $response = $this->statusCodeHandling($e);
-    //         return $response;
-    //     }
-    // }
-
 }

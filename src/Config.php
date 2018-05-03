@@ -5,11 +5,17 @@ namespace guastallaigor\PhpBattlerite;
 use Illuminate\Config\Repository;
 use guastallaigor\PhpBattlerite\Exceptions\ConfigFileNotFoundException;
 
-/**
- * Class Config
- *
- * @author  Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
- */
+ /**
+  * PHP-Battlerite easy API
+  *
+  * @category  Games
+  * @package   src
+  * Config class
+  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+  * @copyright 2018 PHP Battlerite
+  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  * @link      https://github.com/guastallaigor/php-battlerite
+  */
 class Config
 {
 
