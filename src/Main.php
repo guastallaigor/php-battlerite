@@ -20,21 +20,21 @@ class Main
     /**
      * API URL root of Battlerite.
      *
-     * @var String
+     * @var string
      */
     private static $apiUrl = "https://api.dc01.gamelockerapp.com/shards/global/";
 
     /**
      * Guzzle Client variable to send all requests.
      *
-     * @var String
+     * @var array<GuzzleHttp\Client>
      */
     private $client;
 
     /**
      * API Key of your development battlerite account.
      *
-     * @var String
+     * @var string
      */
     private $apiKey;
 
@@ -57,7 +57,7 @@ class Main
     /**
      * Method to set your API Key provided by your Battlerite development account.
      *
-     * @param String $apiKey
+     * @param string $apiKey
      *
      * @return void
      */
@@ -69,11 +69,11 @@ class Main
     /**
      * Function that is going to make all the requests you need.
      *
-     * @param String $method
-     * @param String $request
+     * @param string $method
+     * @param string $request
      * @param array $filter
      *
-     * @return object
+     * @return array
      */
     public function sendRequest($method, $request, $filter = [])
     {
@@ -105,9 +105,9 @@ class Main
     /**
      * Get a single player request.
      *
-     * @param String $id
+     * @param string $id
      *
-     * @return Object
+     * @return array
      */
     public function getPlayer($id)
     {
@@ -117,10 +117,10 @@ class Main
     /**
      * Get a collection of players.
      *
-     * @param String $ids
-     * @param String $type
+     * @param string $ids
+     * @param string $type
      *
-     * @return Object
+     * @return array
      */
     public function getPlayers($ids, $type = 'playerIds')
     {
@@ -133,7 +133,7 @@ class Main
      *
      * @param array $filter
      *
-     * @return Object
+     * @return array
      */
     public function getTeams($filter = [])
     {
@@ -143,7 +143,7 @@ class Main
     /**
      * Get Battlerite status.
      *
-     * @return Object
+     * @return array
      */
     public function getStatus()
     {
@@ -167,7 +167,7 @@ class Main
     {
         $response = [
             "statuscode" => $error->getResponse()->getStatusCode(),
-            "error" => $error->getResponse()->getBody(true)->getContents(),
+            "error" => $error->getResponse()->getBody()->getContents(),
         ];
 
         return $response;

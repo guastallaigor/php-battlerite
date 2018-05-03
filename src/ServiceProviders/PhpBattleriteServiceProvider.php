@@ -62,13 +62,6 @@ class PhpBattleriteServiceProvider extends ServiceProvider
         |--------------------------------------------------------------------------
         */
         $this->facadeBindings();
-
-        /*
-        |--------------------------------------------------------------------------
-        | Registering Service Providers
-        |--------------------------------------------------------------------------
-        */
-        $this->serviceProviders();
     }
 
     /**
@@ -131,15 +124,5 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
-    }
-
-    /**
-     * Registering Other Custom Service Providers (if you have)
-     *
-     * @return void
-     */
-    private function serviceProviders()
-    {
-        // $this->app->register('...\...\...');
     }
 }
