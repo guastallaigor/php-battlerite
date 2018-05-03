@@ -13,11 +13,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE)
 
 > **Note:** I do not own the Developer Battlerite API.
->
 > I do not work with Stunlock Studios.
->
 > This is an unofficial project.
->
 > This project uses the Developer Battlerite API with an unique key. You will must request one.
 
 ## Project directory
