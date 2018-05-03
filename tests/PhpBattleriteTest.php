@@ -62,8 +62,7 @@ class PhpBattleriteTest extends TestCase
 
     public function testGetASinglePlayer()
     {
-        $main = new Main(new Config());
-        $main->setAPIKey(self::$apiKey);
+        $main = $this->buildMain();
         $id = '812023674780659712';
         $response = $main->getPlayer($id);
 
@@ -76,8 +75,7 @@ class PhpBattleriteTest extends TestCase
 
     public function testGetACollectionOfTwoPlayers()
     {
-        $main = new Main(new Config());
-        $main->setAPIKey(self::$apiKey);
+        $main = $this->buildMain();
         $ids = '812023674780659712,779528393816432640';
         $response = $main->getPlayers($ids);
 
@@ -93,8 +91,7 @@ class PhpBattleriteTest extends TestCase
 
     public function testGetBattleriteStatus()
     {
-        $main = new Main(new Config());
-        $main->setAPIKey(self::$apiKey);
+        $main = $this->buildMain();
         $response = $main->getStatus();
 
         $this->assertJsonDocumentMatchesSchema($response, [
@@ -117,5 +114,13 @@ class PhpBattleriteTest extends TestCase
                 ]
             ]
         ]);
+    }
+
+    private function buildMain()
+    {
+        $main = new Main(new Config());
+        $main->setAPIKey(self::$apiKey);
+
+        return $main;
     }
 }
