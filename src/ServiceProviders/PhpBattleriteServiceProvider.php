@@ -99,13 +99,6 @@ class PhpBattleriteServiceProvider extends ServiceProvider
      */
     private function facadeBindings()
     {
-        // Register 'phpbattlerite.say' instance container
-        $this->app['phpbattlerite.phpbattlerite'] = $this->app->share(
-            function ($app) {
-                return $app->make(Main::class);
-            }
-        );
-
         // Register 'PhpBattlerite' Alias,
         // So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(
