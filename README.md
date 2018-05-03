@@ -3,6 +3,10 @@
     <h1>PHP Battlerite</h1>
 </div>
 
+> **Note:** I do not own the Developer Battlerite API.
+> I do not work with Stunlock Studios.
+> This is an unofficial project.
+
 <p align="center">
     PHP Battlerite is an easy composer PHP API to get all the data you need from the <a href="https://developer.battlerite.com">Developer Battlerite API</a>
 </p>
@@ -45,6 +49,10 @@
 |   +-- TestCase.php
 +-- vendor
 ```
+
+## API
+
+...
 
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
