@@ -61,9 +61,9 @@
 Thanks for considering contributing to PHP Battlerite!
 
 We welcome any type of contribution, not only code. You can help with:
-- **QA**: File bug reports, the more details you can give the better (e.g. screenshots with the console open)
-- **Community**: Presenting the project at meetups, organizing a dedicated meetup for the local community
-- **Code**: Take a look at the [open issues](https://github.com/guastallaigor/php-battlerite/issues). Even if you can't write the code yourself, you can comment on them, showing that you care about a given issue matters. It helps us triage them
+- **QA**: File bug reports, the more details you can give the better (e.g. screenshots with the console open);
+- **Community**: Presenting the project at meetups, organizing a dedicated meetup for the local community;
+- **Code**: Take a look at the [open issues](https://github.com/guastallaigor/php-battlerite/issues). Even if you can't write the code yourself, you can comment on them, showing that you care about a given issue matters. It helps us triage them.
 
 ## Development
 
