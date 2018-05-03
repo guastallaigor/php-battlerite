@@ -22,7 +22,8 @@ class Main
      *
      * @var string
      */
-    private static $apiUrl = "https://api.dc01.gamelockerapp.com/shards/global/";
+    private static $apiUrl = "https://api.dc01.gamelockerapp.com/shards/";
+    private static $global = "global/";
 
     /**
      * Guzzle Client variable to send all requests.
@@ -75,9 +76,9 @@ class Main
      *
      * @return array
      */
-    public function sendRequest($method, $request, $filter = [])
+    public function sendRequest($method, $request, $filter = [], $global = true)
     {
-        $url = self::$apiUrl . $request;
+        $url = self::$apiUrl .= $global ? $this->global . $request : $request;
         $header = [
             "Authorization" => "Bearer " . $this->apiKey,
             "Accept" =>  "application/vnd.api+json"
@@ -146,7 +147,7 @@ class Main
      */
     public function getStatus()
     {
-        return $this->sendRequest('GET', 'status');
+        return $this->sendRequest('GET', 'status', [], false);
     }
 
     public function getTelemetry()
