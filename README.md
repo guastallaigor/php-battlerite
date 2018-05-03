@@ -1,5 +1,11 @@
 # PHP-battlerite
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/?branch=master)
+
+[![Build Status](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/build-status/master)
+
 ## Coming soon...
 
 ### TODO
