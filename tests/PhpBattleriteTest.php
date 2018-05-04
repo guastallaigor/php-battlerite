@@ -73,10 +73,10 @@ class PhpBattleriteTest extends TestCase
         ]);
     }
 
-    public function testGetACollectionOfTwoPlayers()
+    public function testGetACollectionOfTwoPlayersByPlayerId()
     {
         $main = $this->buildMain();
-        $ids = '812023674780659712,779528393816432640';
+        $ids = '812023674780659712,804508313378234368';
         $response = $main->getPlayers($ids);
 
         $this->assertJsonDocumentMatchesSchema($response, [
@@ -113,6 +113,143 @@ class PhpBattleriteTest extends TestCase
                     ]
                 ]
             ]
+        ]);
+    }
+
+    public function testGetFilteredMatches()
+    {
+        $main = $this->buildMain();
+        $filters = [
+            'limit' => '1',
+            'sort' => 'createdAt',
+            'serverType' => 'QUICK2V2,QUICK3V3',
+            'rankingType' => 'RANKED',
+            'playerIds' => '812023674780659712',
+        ];
+        $response = $main->getMatches($filters);
+
+        $this->assertJsonDocumentMatchesSchema($response, [
+            'type' => 'object',
+            'required' => ['data', 'included', 'links', 'meta'],
+            'data' => [
+                'type' => 'object',
+                'required' => ['type', 'id', 'attributes', 'relationships', 'links'],
+                'properties' => [
+                    'type' => ['type' => 'string'],
+                    'id' => ['type' => 'string'],
+                    'attributes' => [
+                        'type' => 'object',
+                        'required' => ['createdAt', 'duration', 'gameMode', 'patchVersion', 'shardId', 'stats', 'tags', 'titleId'],
+                        'properties' => [
+                            'createdAt' => ['type' => 'string'],
+                            'duration' => ['type' => 'string'],
+                            'gameMode' => ['type' => 'string'],
+                            'patchVersion' => ['type' => 'string'],
+                            'shardId' => ['type' => 'string'],
+                            'stats' => [
+                                'type' => 'object',
+                                'required' => ['mapID', 'type'],
+                                'properties' => [
+                                    'mapID' => ['type' => 'string'],
+                                    'type' => ['type' => 'string']
+                                ]
+                            ],
+                            'tags' => [
+                                'type' => 'object',
+                                'required' => ['rankingType', 'serverType'],
+                                'properties' => [
+                                    'rankingType' => ['type' => 'string'],
+                                    'serverType' => ['type' => 'string']
+                                ]
+                            ],
+                            'titleId' => ['type' => 'string']
+                        ]
+                    ],
+                    'relationships' => [
+                        'type' => 'object',
+                        'required' => ['assets', 'rosters', 'rounds', 'spectators'],
+                        'properties' => [
+                            'assets' => [
+                                'type' => 'string',
+                                'required' => ['data'],
+                                'properties' => [
+                                    'data' => [
+                                        'type' => 'array',
+                                        'required' => ['type', 'id'],
+                                        'properties' => [
+                                            'type' => ['type' => 'string'],
+                                            'id' => ['type' => 'string']
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            'rosters' => [
+                                'data' => [
+                                    'type' => 'array',
+                                    'required' => ['type', 'id'],
+                                    'properties' => [
+                                        'type' => ['type' => 'string'],
+                                        'id' => ['type' => 'string']
+                                    ]
+                                ]
+                            ],
+                            'rounds' => [
+                                'data' => [
+                                    'type' => 'array',
+                                    'required' => ['type', 'id'],
+                                    'properties' => [
+                                        'type' => ['type' => 'string'],
+                                        'id' => ['type' => 'string']
+                                    ]
+                                ]
+                            ],
+                            'spectators' => [
+                                'data' => ['type' => 'array']
+                            ]
+                        ]
+                    ],
+                    'links' => [
+                        'type' => 'object',
+                        'required' => ['schema', 'self'],
+                        'properties' => [
+                            'schema' => ['type' => 'string'],
+                            'self' => ['type' => 'string']
+                        ]
+                    ]
+                ]
+            ],
+            // missing some comparisions on array bellow
+            'included' => [
+                'type' => 'array',
+                'required' => ['type', 'id', 'attributes'],
+                'properties' => [
+                    'type' => ['type' => 'string'],
+                    'id' => ['type' => 'string'],
+                    'attributes' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'duration' => ['type' => 'number'],
+                            'ordinal' => ['type' => 'number'],
+                            'stats' => [
+                                'type' => 'object',
+                                'required' => ['winningTeam'],
+                                'properties' => [
+                                    'winningTeam' => ['type' => 'number']
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            'links' => [
+                'type' => 'object',
+                'required' => ['next', 'self'],
+                'properties' => [
+                    'next' => ['type' => 'string'],
+                    'self' => ['type' => 'string']
+                ]
+            ],
+            'meta' => ['type' => 'object']
         ]);
     }
 

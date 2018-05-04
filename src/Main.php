@@ -125,12 +125,13 @@ class Main
     /**
      * Get a collection of teams.
      *
-     * @param array $filter
+     * @param array $filters
      *
      * @return array
      */
     public function getTeams($filter)
     {
+        // need work
         return $this->sendRequest('GET', 'teams', $filter);
     }
 
@@ -144,12 +145,27 @@ class Main
         return $this->sendRequest('GET', 'status', [], false);
     }
 
-    public function getTelemetry()
+    /**
+     * Get all the telemetry data.
+     *
+     * @param array $filters
+     *
+     * @return array
+     */
+    public function getMatches($filters)
     {
-        $response = $this->sendRequest('GET', 'matches');
-        // need work
+        $formattedFilter = [];
+        foreach($filters as $key => $value) {
+            if ($key === 'offset' || $key === 'limit') {
+                $formattedFilter['page['. $key .']'] = $value;
+            } else if ($key === 'sort') {
+                $formattedFilter['sort'] = $value;
+            } else {
+                $formattedFilter['filter['. $key .']'] = $value;
+            }
+        }
 
-        return $response;
+        return $this->sendRequest('GET', 'matches', $formattedFilter);
     }
 
     /**
@@ -157,15 +173,13 @@ class Main
      *
      * @param RequestException $error
      *
-     * @return void
+     * @return array
      */
     protected function statusCodeHandling($error)
     {
-        $response = [
+        return [
             'statuscode' => $error->getResponse()->getStatusCode(),
             'error' => $error->getResponse()->getBody()->getContents(),
         ];
-
-        return $response;
     }
 }
