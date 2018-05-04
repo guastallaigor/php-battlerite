@@ -38,6 +38,7 @@
 |   +-- Config.php
 |   +-- Main.php
 |   +-- Config
+|   |   +-- apikey.php
 |   |   +-- phpbattlerite.php
 |   +-- Exceptions
 |   |   +-- ConfigFileNotFoundException.php
