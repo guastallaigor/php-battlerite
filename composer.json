@@ -63,7 +63,7 @@
                 "source": {
                     "url": "git://github.com/hfernan/php-battlerite.git",
                     "type": "git",
-                    "reference": "feature/add-setting-to-use-the-env-file"
+                    "reference": "master"
                 },
                 "autoload": {
                     "psr-4": {
