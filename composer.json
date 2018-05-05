@@ -53,5 +53,25 @@
                 "PhpBattlerite": "guastallaigor\\PhpBattlerite\\Facedes\\PhpBattlerite"
             }
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "hfernan/php-battlerite",
+                "version": "dev-master",
+                "source": {
+                    "url": "git://github.com/hfernan/php-battlerite.git",
+                    "type": "git",
+                    "reference": "feature/add-setting-to-use-the-env-file"
+                },
+                "autoload": {
+                    "psr-4": {
+                    "guastallaigor\\PhpBattlerite\\": "src",
+                    "PhpBattlerite\\Library\\": "src/library"
+                    }
+                }
+            }
+        }
+    ]
 }
