@@ -75,7 +75,7 @@ class Main
         $url = $apiUrl.($global ? $shardsGlobal.$request : $request);
         $header = [
             'Authorization' => 'Bearer '.$this->apiKey,
-            'Accept'        =>  'application/vnd.api+json',
+            'Accept'        => 'application/vnd.api+json',
         ];
 
         try {
@@ -119,6 +119,7 @@ class Main
     public function getPlayers($ids, $type = 'playerIds')
     {
         $filter = ['filter['.$type.']' => $ids];
+
         return $this->sendRequest('GET', 'players', $filter);
     }
 

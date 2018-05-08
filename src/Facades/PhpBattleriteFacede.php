@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class PhpBattleriteFacede extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

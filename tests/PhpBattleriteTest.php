@@ -32,7 +32,7 @@ class PhpBattleriteTest extends TestCase
                     'name'         => ['type' => 'string'],
                     'patchVersion' => ['type' => 'string'],
                     'shardId'      => ['type' => 'string'],
-                    'stats'        => ['type' => 'object']
+                    'stats'        => ['type' => 'object'],
                 ],
             ],
             'titleId'       => ['type' => 'string'],
@@ -304,7 +304,7 @@ class PhpBattleriteTest extends TestCase
                                     'required'   => ['type', 'id'],
                                     'properties' => [
                                         'type' => ['type' => 'string'],
-                                        'id'   => ['type' => 'string']
+                                        'id'   => ['type' => 'string'],
                                     ],
                                 ],
                             ],

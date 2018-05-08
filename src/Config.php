@@ -18,7 +18,6 @@ use Illuminate\Config\Repository;
  */
 class Config
 {
-
     /**
      * Config file name.
      */

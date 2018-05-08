@@ -15,5 +15,4 @@ namespace guastallaigor\PhpBattlerite\Exceptions;
  */
 class ConfigFileNotFoundException extends Exception
 {
-
 }
