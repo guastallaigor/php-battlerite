@@ -409,7 +409,7 @@ class PhpBattleriteTest extends TestCase
                     ],
                 ],
             ],
-            // missing some comparisions on array bellow
+            // missing some comparisons on array bellow
             'included' => [
                 'type'       => 'array',
                 'properties' => [
