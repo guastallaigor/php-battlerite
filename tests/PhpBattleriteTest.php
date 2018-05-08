@@ -9,7 +9,7 @@ use guastallaigor\PhpBattlerite\Main;
  * PHP-Battlerite easy API.
  *
  * @category  Games
- * *
+ *
  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
  * @copyright 2018 PHP Battlerite
  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
@@ -23,8 +23,8 @@ class PhpBattleriteTest extends TestCase
         'type'       => 'object',
         'required'   => ['type', 'id', 'attributes', 'titleId', 'relationships', 'links'],
         'properties' => [
-            'type' => ['type' => 'string'],
-            'id'   => ['type' => 'string'],
+            'type'       => ['type' => 'string'],
+            'id'         => ['type' => 'string'],
             'attributes' => [
                 'type'       => 'object',
                 'required'   => ['name', 'patchVersion', 'shardId', 'stats'],
@@ -33,7 +33,7 @@ class PhpBattleriteTest extends TestCase
                     'patchVersion' => ['type' => 'string'],
                     'shardId'      => ['type' => 'string'],
                     'stats'        => ['type' => 'object']
-                ]
+                ],
             ],
             'titleId'       => ['type' => 'string'],
             'relationships' => [
@@ -44,10 +44,10 @@ class PhpBattleriteTest extends TestCase
                         'type'       => 'object',
                         'required'   => ['data'],
                         'properties' => [
-                            'data' => ['type' => 'array']
-                        ]
-                    ]
-                ]
+                            'data' => ['type' => 'array'],
+                        ],
+                    ],
+                ],
             ],
             'links' => [
                 'type'       => 'object',
@@ -55,9 +55,9 @@ class PhpBattleriteTest extends TestCase
                 'properties' => [
                     'schema' => ['type' => 'string'],
                     'self'   => ['type' => 'string'],
-                ]
-            ]
-        ]
+                ],
+            ],
+        ],
     ];
     private $roster = [
         'type'       => 'object',
@@ -76,10 +76,10 @@ class PhpBattleriteTest extends TestCase
                         'properties' => [
                             'score' => ['type' => 'string'],
                             'side'  => ['type' => 'string'],
-                        ]
+                        ],
                     ],
                     'won' => ['type' => 'string'],
-                ]
+                ],
             ],
             'relationships' => [
                 'type'       => 'object',
@@ -95,27 +95,27 @@ class PhpBattleriteTest extends TestCase
                                 'properties' => [
                                     'type' => ['type' => 'string'],
                                     'id'   => ['type' => 'string'],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'team' => [
                         'type'       => 'object',
                         'required'   => ['data'],
                         'properties' => [
                             'data' => ['type' => 'object']
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ],
     ];
     private $participante = [
         'type'       => 'object',
         'required'   => ['type', 'id', 'attributes', 'relationships'],
         'properties' => [
-            'type' => ['type' => 'string'],
-            'id'   => ['type' => 'string'],
+            'type'       => ['type' => 'string'],
+            'id'         => ['type' => 'string'],
             'attributes' => [
                 'type'       => 'object',
                 'required'   => ['actor', 'shardId', 'stats'],
@@ -130,10 +130,10 @@ class PhpBattleriteTest extends TestCase
                             'emote'      => ['type' => 'number'],
                             'mount'      => ['type' => 'number'],
                             'outfit'     => ['type' => 'number'],
-                        ]
+                        ],
                     ],
                     'won' => ['type' => 'string'],
-                ]
+                ],
             ],
             'relationships' => [
                 'type'       => 'object',
@@ -149,19 +149,19 @@ class PhpBattleriteTest extends TestCase
                                 'properties' => [
                                     'type' => ['type' => 'string'],
                                     'id'   => ['type' => 'string'],
-                                ]
-                            ]
-                        ]
+                                ],
+                            ],
+                        ],
                     ],
                     'team' => [
                         'type'       => 'object',
                         'required'   => ['data'],
                         'properties' => [
-                            'data' => ['type' => 'object']
-                        ]
-                    ]
-                ]
-            ]
+                            'data' => ['type' => 'object'],
+                        ],
+                    ],
+                ],
+            ],
         ],
     ];
 
@@ -174,7 +174,7 @@ class PhpBattleriteTest extends TestCase
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
             'required' => ['data'],
-            'data' => [$this->playerData],
+            'data'     => [$this->playerData],
         ]);
     }
 
@@ -187,7 +187,7 @@ class PhpBattleriteTest extends TestCase
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
             'required' => ['data'],
-            'data' => [
+            'data'     => [
                 $this->playerData,
                 $this->playerData,
             ],
@@ -202,7 +202,7 @@ class PhpBattleriteTest extends TestCase
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
             'required' => ['data'],
-            'data' => [
+            'data'     => [
                 'type'       => 'object',
                 'required'   => ['type', 'id', 'attributes'],
                 'properties' => [
@@ -214,10 +214,10 @@ class PhpBattleriteTest extends TestCase
                         'properties' => [
                             'releasedAt' => ['type' => 'string'],
                             'version'    => ['type' => 'string'],
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -236,7 +236,7 @@ class PhpBattleriteTest extends TestCase
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
             'required' => ['data', 'included', 'links', 'meta'],
-            'data' => [
+            'data'     => [
                 'type'       => 'object',
                 'required'   => ['type', 'id', 'attributes', 'relationships', 'links'],
                 'properties' => [
@@ -256,19 +256,19 @@ class PhpBattleriteTest extends TestCase
                                 'required'   => ['mapID', 'type'],
                                 'properties' => [
                                     'mapID'  => ['type' => 'string'],
-                                    'type'   => ['type' => 'string']
-                                ]
+                                    'type'   => ['type' => 'string'],
+                                ],
                             ],
                             'tags' => [
                                 'type'       => 'object',
                                 'required'   => ['rankingType', 'serverType'],
                                 'properties' => [
                                     'rankingType' => ['type' => 'string'],
-                                    'serverType'  => ['type' => 'string']
-                                ]
+                                    'serverType'  => ['type' => 'string'],
+                                ],
                             ],
-                            'titleId' => ['type' => 'string']
-                        ]
+                            'titleId' => ['type' => 'string'],
+                        ],
                     ],
                     'relationships' => [
                         'type'       => 'object',
@@ -283,10 +283,10 @@ class PhpBattleriteTest extends TestCase
                                         'required'   => ['type', 'id'],
                                         'properties' => [
                                             'type' => ['type' => 'string'],
-                                            'id'   => ['type' => 'string']
-                                        ]
-                                    ]
-                                ]
+                                            'id'   => ['type' => 'string'],
+                                        ],
+                                    ],
+                                ],
                             ],
                             'rosters' => [
                                 'data' => [
@@ -294,9 +294,9 @@ class PhpBattleriteTest extends TestCase
                                     'required'   => ['type', 'id'],
                                     'properties' => [
                                         'type' => ['type' => 'string'],
-                                        'id'   => ['type' => 'string']
-                                    ]
-                                ]
+                                        'id'   => ['type' => 'string'],
+                                    ],
+                                ],
                             ],
                             'rounds' => [
                                 'data' => [
@@ -305,23 +305,23 @@ class PhpBattleriteTest extends TestCase
                                     'properties' => [
                                         'type' => ['type' => 'string'],
                                         'id'   => ['type' => 'string']
-                                    ]
-                                ]
+                                    ],
+                                ],
                             ],
                             'spectators' => [
-                                'data' => ['type' => 'array']
-                            ]
-                        ]
+                                'data' => ['type' => 'array'],
+                            ],
+                        ],
                     ],
                     'links' => [
                         'type'       => 'object',
                         'required'   => ['schema', 'self'],
                         'properties' => [
                             'schema' => ['type' => 'string'],
-                            'self'   => ['type' => 'string']
-                        ]
-                    ]
-                ]
+                            'self'   => ['type' => 'string'],
+                        ],
+                    ],
+                ],
             ],
             // missing some comparisions on array bellow
             'included' => [
@@ -339,22 +339,22 @@ class PhpBattleriteTest extends TestCase
                                 'type'       => 'object',
                                 'required'   => ['winningTeam'],
                                 'properties' => [
-                                    'winningTeam' => ['type' => 'number']
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                    'winningTeam' => ['type' => 'number'],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
             'links' => [
                 'type'       => 'object',
                 'required'   => ['next', 'self'],
                 'properties' => [
                     'next' => ['type' => 'string'],
-                    'self' => ['type' => 'string']
-                ]
+                    'self' => ['type' => 'string'],
+                ],
             ],
-            'meta' => ['type' => 'object']
+            'meta' => ['type' => 'object'],
         ]);
     }
 

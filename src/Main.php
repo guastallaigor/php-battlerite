@@ -4,17 +4,17 @@ namespace guastallaigor\PhpBattlerite;
 
 use GuzzleHttp\Exception\RequestException;
 
- /**
-  * PHP-Battlerite easy API.
-  *
-  * @category  Games
-  *
-  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
-  * @copyright 2018 PHP Battlerite
-  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
-  *
-  * @link      https://github.com/guastallaigor/php-battlerite
-  */
+/**
+ * PHP-Battlerite easy API.
+ *
+ * @category  Games
+ *
+ * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+ * @copyright 2018 PHP Battlerite
+ * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+ *
+ * @link      https://github.com/guastallaigor/php-battlerite
+ */
 class Main
 {
     /**
@@ -72,10 +72,10 @@ class Main
     {
         $apiUrl = 'https://api.dc01.gamelockerapp.com/';
         $shardsGlobal = 'shards/global/';
-        $url =  $apiUrl.($global ?  $shardsGlobal.$request : $request);
+        $url = $apiUrl.($global ? $shardsGlobal.$request : $request);
         $header = [
             'Authorization' => 'Bearer '.$this->apiKey,
-            'Accept' =>  'application/vnd.api+json',
+            'Accept'        =>  'application/vnd.api+json',
         ];
 
         try {
@@ -118,7 +118,7 @@ class Main
      */
     public function getPlayers($ids, $type = 'playerIds')
     {
-        $filter = ['filter['. $type .']' => $ids];
+        $filter = ['filter['.$type.']' => $ids];
         return $this->sendRequest('GET', 'players', $filter);
     }
 

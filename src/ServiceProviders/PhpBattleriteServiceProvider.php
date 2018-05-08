@@ -2,21 +2,21 @@
 
 namespace guastallaigor\PhpBattlerite\ServiceProviders;
 
-use Illuminate\Support\ServiceProvider;
 use guastallaigor\PhpBattlerite\Facades\PhpBattlerite;
 use guastallaigor\PhpBattlerite\Main;
+use Illuminate\Support\ServiceProvider;
 
- /**
-  * PHP-Battlerite easy API.
-  *
-  * @category  Games
-  *
-  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
-  * @copyright 2018 PHP Battlerite
-  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
-  *
-  * @link      https://github.com/guastallaigor/php-battlerite
-  */
+/**
+ * PHP-Battlerite easy API.
+ *
+ * @category  Games
+ *
+ * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+ * @copyright 2018 PHP Battlerite
+ * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+ *
+ * @link      https://github.com/guastallaigor/php-battlerite
+ */
 class PhpBattleriteServiceProvider extends ServiceProvider
 {
 
@@ -35,9 +35,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     public function boot()
     {
         /*
-        |--------------------------------------------------------------------------
-        | Publish the Config file from the Package to the App directory.
-        |--------------------------------------------------------------------------
+        * Publish the Config file from the Package to the App directory.
         */
         $this->configPublisher();
     }
@@ -50,16 +48,12 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     public function register()
     {
         /*
-        |--------------------------------------------------------------------------
-        | Implementation Bindings
-        |--------------------------------------------------------------------------
+        * Implementation Bindings.
         */
         $this->implementationBindings();
 
         /*
-        |--------------------------------------------------------------------------
-        | Facade Bindings
-        |--------------------------------------------------------------------------
+        * Facade Bindings.
         */
         $this->facadeBindings();
     }

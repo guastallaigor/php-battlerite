@@ -27,7 +27,6 @@ abstract class TestCase extends PHPUnit
 
     public function setUp()
     {
-
         parent::setUp();
     }
 
