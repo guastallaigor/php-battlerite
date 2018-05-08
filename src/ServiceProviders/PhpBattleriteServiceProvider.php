@@ -7,14 +7,14 @@ use guastallaigor\PhpBattlerite\Facades\PhpBattlerite;
 use guastallaigor\PhpBattlerite\Main;
 
  /**
-  * PHP-Battlerite easy API
+  * PHP-Battlerite easy API.
   *
   * @category  Games
-  * @package   ServiceProviders
-  * MainServiceProvider class for this package
+  *
   * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
   * @copyright 2018 PHP Battlerite
   * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  *
   * @link      https://github.com/guastallaigor/php-battlerite
   */
 class PhpBattleriteServiceProvider extends ServiceProvider
@@ -36,7 +36,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     {
         /*
         |--------------------------------------------------------------------------
-        | Publish the Config file from the Package to the App directory
+        | Publish the Config file from the Package to the App directory.
         |--------------------------------------------------------------------------
         */
         $this->configPublisher();
@@ -86,8 +86,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
         // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
         $this->publishes(
             [
-                __DIR__ . '/Config/phpbattlerite.php' =>
-                    config_path('phpbattlerite.php')
+                __DIR__.'/Config/phpbattlerite.php' => config_path('phpbattlerite.php'),
             ]
         );
     }

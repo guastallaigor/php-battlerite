@@ -2,30 +2,30 @@
 
 namespace guastallaigor\PhpBattlerite;
 
-use Illuminate\Config\Repository;
 use guastallaigor\PhpBattlerite\Exceptions\ConfigFileNotFoundException;
+use Illuminate\Config\Repository;
 
  /**
-  * PHP-Battlerite easy API
+  * PHP-Battlerite easy API.
   *
   * @category  Games
-  * @package   src
-  * Config class
+  *
   * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
   * @copyright 2018 PHP Battlerite
   * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  *
   * @link      https://github.com/guastallaigor/php-battlerite
   */
 class Config
 {
 
     /**
-     * Config file name
+     * Config file name.
      */
-    private static $configFileName = "phpbattlerite";
+    private static $configFileName = 'phpbattlerite';
 
     /**
-     * @var  \Illuminate\Config\Repository
+     * @var \Illuminate\Config\Repository
      */
     private $config;
 
@@ -36,7 +36,7 @@ class Config
     {
         $configPath = $this->configurationPath();
 
-        $config_file = $configPath . '/' . self::$configFileName . '.php';
+        $config_file = $configPath.'/'.self::$configFileName.'.php';
 
         if (!file_exists($config_file)) {
             throw new ConfigFileNotFoundException();
@@ -46,14 +46,14 @@ class Config
     }
 
     /**
-     * return the correct config directory path
+     * return the correct config directory path.
      *
      * @return mixed|string
      */
     private function configurationPath()
     {
         // the config file of the package directory
-        $config_path = __DIR__ . '/Config';
+        $config_path = __DIR__.'/Config';
 
         // check if this laravel specific function `config_path()` exist (means this package is used inside
         // a laravel framework). If so then load then try to load the laravel config file if it exist.
@@ -67,7 +67,7 @@ class Config
     /**
      * @param $key
      *
-     * @return  mixed
+     * @return mixed
      */
     public function get($key)
     {

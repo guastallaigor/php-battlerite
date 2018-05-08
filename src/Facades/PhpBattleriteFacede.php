@@ -5,14 +5,14 @@ namespace guastallaigor\PhpBattlerite\Facades;
 use Illuminate\Support\Facades\Facade;
 
  /**
-  * PHP-Battlerite easy API
+  * PHP-Battlerite easy API.
   *
   * @category  Games
-  * @package   Facedes
-  * PhpBattleriteFacede class
+  *
   * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
   * @copyright 2018 PHP Battlerite
   * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  *
   * @link      https://github.com/guastallaigor/php-battlerite
   */
 class PhpBattleriteFacede extends Facade

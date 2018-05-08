@@ -5,14 +5,14 @@ namespace guastallaigor\PhpBattlerite;
 use GuzzleHttp\Exception\RequestException;
 
  /**
-  * PHP-Battlerite easy API
+  * PHP-Battlerite easy API.
   *
   * @category  Games
-  * @package   src
-  * Main class
+  *
   * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
   * @copyright 2018 PHP Battlerite
   * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+  *
   * @link      https://github.com/guastallaigor/php-battlerite
   */
 class Main
@@ -32,7 +32,7 @@ class Main
     private $apiKey;
 
     /**
-     * @var  \guastallaigor\PhpBattlerite\Config
+     * @var \guastallaigor\PhpBattlerite\Config
      */
     private $config;
 
@@ -64,7 +64,7 @@ class Main
      *
      * @param string $method
      * @param string $request
-     * @param array $filter
+     * @param array  $filter
      *
      * @return array
      */
@@ -72,10 +72,10 @@ class Main
     {
         $apiUrl = 'https://api.dc01.gamelockerapp.com/';
         $shardsGlobal = 'shards/global/';
-        $url =  $apiUrl . ($global ?  $shardsGlobal . $request : $request);
+        $url =  $apiUrl.($global ?  $shardsGlobal.$request : $request);
         $header = [
-            'Authorization' => 'Bearer ' . $this->apiKey,
-            'Accept' =>  'application/vnd.api+json'
+            'Authorization' => 'Bearer '.$this->apiKey,
+            'Accept' =>  'application/vnd.api+json',
         ];
 
         try {
@@ -83,7 +83,7 @@ class Main
                 $method,
                 $url,
                 [
-                    'query' => $filter,
+                    'query'   => $filter,
                     'headers' => $header,
                 ]
             );
@@ -105,7 +105,7 @@ class Main
      */
     public function getPlayer($id)
     {
-        return $this->sendRequest('GET', 'players/' . $id);
+        return $this->sendRequest('GET', 'players/'.$id);
     }
 
     /**
@@ -155,13 +155,13 @@ class Main
     public function getMatches($filters)
     {
         $formattedFilter = [];
-        foreach($filters as $key => $value) {
+        foreach ($filters as $key => $value) {
             if ($key === 'offset' || $key === 'limit') {
-                $formattedFilter['page['. $key .']'] = $value;
-            } else if ($key === 'sort') {
+                $formattedFilter['page['.$key.']'] = $value;
+            } elseif ($key === 'sort') {
                 $formattedFilter['sort'] = $value;
             } else {
-                $formattedFilter['filter['. $key .']'] = $value;
+                $formattedFilter['filter['.$key.']'] = $value;
             }
         }
 
@@ -179,7 +179,7 @@ class Main
     {
         return [
             'statuscode' => $error->getResponse()->getStatusCode(),
-            'error' => $error->getResponse()->getBody()->getContents(),
+            'error'      => $error->getResponse()->getBody()->getContents(),
         ];
     }
 }
