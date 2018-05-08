@@ -68,7 +68,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish the Config file from the Package to the App directory
+     * Publish the Config file from the Package to the App directory.
      *
      * @return void
      */
