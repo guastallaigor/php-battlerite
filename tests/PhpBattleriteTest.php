@@ -103,7 +103,7 @@ class PhpBattleriteTest extends TestCase
                         'type'       => 'object',
                         'required'   => ['data'],
                         'properties' => [
-                            'data' => ['type' => 'object']
+                            'data' => ['type' => 'object'],
                         ],
                     ],
                 ],
@@ -240,8 +240,8 @@ class PhpBattleriteTest extends TestCase
                 'type'       => 'object',
                 'required'   => ['type', 'id', 'attributes', 'relationships', 'links'],
                 'properties' => [
-                    'type' => ['type' => 'string'],
-                    'id'   => ['type' => 'string'],
+                    'type'       => ['type' => 'string'],
+                    'id'         => ['type' => 'string'],
                     'attributes' => [
                         'type'       => 'object',
                         'required'   => ['createdAt', 'duration', 'gameMode', 'patchVersion', 'shardId', 'stats', 'tags', 'titleId'],

@@ -28,15 +28,12 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Boot the package.
+     * Publish the Config file from the Package to the App directory.
      *
      * @return void
      */
     public function boot()
     {
-        /*
-        * Publish the Config file from the Package to the App directory.
-        */
         $this->configPublisher();
     }
 
