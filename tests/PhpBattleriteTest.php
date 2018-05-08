@@ -19,7 +19,7 @@ use guastallaigor\PhpBattlerite\Main;
 class PhpBattleriteTest extends TestCase
 {
     private static $apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlMzcwZGNjMC1iNWY3LTAxMzUtY2M4Yy0wYTU4NjQ2MGRjMzUiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTExODI1MDA0LCJwdWIiOiJzdHVubG9jay1zdHVkaW9zIiwidGl0bGUiOiJiYXR0bGVyaXRlIiwiYXBwIjoiZmFudGFzeS1lLWxlYWd1ZSIsInNjb3BlIjoiY29tbXVuaXR5IiwibGltaXQiOjEwfQ.KO7BudPBWqk8DHbfTCYgtwhJK7T3WVL_qiOUqaNt-O8';
-    private $playerData = [
+    private $player = [
         'type'       => 'object',
         'required'   => ['type', 'id', 'attributes', 'titleId', 'relationships', 'links'],
         'properties' => [
@@ -55,6 +55,37 @@ class PhpBattleriteTest extends TestCase
                 'properties' => [
                     'schema' => ['type' => 'string'],
                     'self'   => ['type' => 'string'],
+                ],
+            ],
+        ],
+    ];
+    private $team = [
+        'type'       => 'object',
+        'required'   => ['type', 'id', 'attributes', 'relationships'],
+        'properties' => [
+            'type'       => ['type' => 'string'],
+            'id'         => ['type' => 'string'],
+            'attributes' => [
+                'type'       => 'object',
+                'required'   => ['name', 'shardId', 'stats', 'titleId'],
+                'properties' => [
+                    'name'    => ['type' => 'string'],
+                    'shardId' => ['type' => 'string'],
+                    'stats'   => ['type' => 'string'],
+                    'titleId' => ['type' => 'object'],
+                ],
+            ],
+            'relationships' => [
+                'type'       => 'object',
+                'required'   => ['assets'],
+                'properties' => [
+                    'assets' => [
+                        'type'       => 'object',
+                        'required'   => ['data'],
+                        'properties' => [
+                            'data' => ['type' => 'array'],
+                        ],
+                    ],
                 ],
             ],
         ],
@@ -110,7 +141,7 @@ class PhpBattleriteTest extends TestCase
             ],
         ],
     ];
-    private $participante = [
+    private $participant = [
         'type'       => 'object',
         'required'   => ['type', 'id', 'attributes', 'relationships'],
         'properties' => [
@@ -164,6 +195,60 @@ class PhpBattleriteTest extends TestCase
             ],
         ],
     ];
+    private $round = [
+        'type'       => 'object',
+        'required'   => ['type', 'id', 'attributes', 'relationships'],
+        'properties' => [
+            'type'       => ['type' => 'string'],
+            'id'         => ['type' => 'string'],
+            'attributes' => [
+                'type'       => 'object',
+                'required'   => ['duration', 'ordinal', 'stats'],
+                'properties' => [
+                    'duration' => ['type' => 'string'],
+                    'ordinal'  => ['type' => 'string'],
+                    'stats'    => [
+                        'type'       => 'object',
+                        'required'   => ['winningTeam'],
+                        'properties' => [
+                            'winningTeam' => ['type' => 'number'],
+                        ],
+                    ],
+                ],
+            ],
+            'relationships' => [
+                'type'       => 'object',
+                'required'   => ['participants'],
+                'properties' => [
+                    'participants' => [
+                        'type'       => 'object',
+                        'required'   => ['data'],
+                        'properties' => [
+                            'data' => ['type' => 'array'],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ];
+    private $asset = [
+        'type'       => 'object',
+        'required'   => ['type', 'id', 'attributes'],
+        'properties' => [
+            'type'       => ['type' => 'string'],
+            'id'         => ['type' => 'string'],
+            'attributes' => [
+                'type'       => 'object',
+                'required'   => ['URL', 'createdAt', 'description', 'name'],
+                'properties' => [
+                    'URL'         => ['type' => 'string'],
+                    'createdAt'   => ['type' => 'string'],
+                    'description' => ['type' => 'string'],
+                    'name'        => ['type' => 'string'],
+                ],
+            ],
+        ],
+    ];
 
     public function testGetASinglePlayer()
     {
@@ -174,7 +259,7 @@ class PhpBattleriteTest extends TestCase
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
             'required' => ['data'],
-            'data'     => [$this->playerData],
+            'data'     => [$this->player],
         ]);
     }
 
@@ -188,8 +273,8 @@ class PhpBattleriteTest extends TestCase
             'type'     => 'object',
             'required' => ['data'],
             'data'     => [
-                $this->playerData,
-                $this->playerData,
+                $this->player,
+                $this->player,
             ],
         ]);
     }
@@ -232,6 +317,7 @@ class PhpBattleriteTest extends TestCase
             'playerIds'   => '812023674780659712',
         ];
         $response = $main->getMatches($filters);
+        dd($response);
 
         $this->assertJsonDocumentMatchesSchema($response, [
             'type'     => 'object',
@@ -326,7 +412,6 @@ class PhpBattleriteTest extends TestCase
             // missing some comparisions on array bellow
             'included' => [
                 'type'       => 'array',
-                'required'   => ['type', 'id', 'attributes'],
                 'properties' => [
                     'type'       => ['type' => 'string'],
                     'id'         => ['type' => 'string'],
