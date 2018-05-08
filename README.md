@@ -12,6 +12,7 @@
 [![Scrutinizer Build Status](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guastallaigor/php-battlerite/build-status/master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE)
 [![Travis Build Status](https://travis-ci.org/guastallaigor/php-battlerite.svg?branch=master)](https://travis-ci.org/guastallaigor/php-battlerite)
+[![StyleCI](https://styleci.io/repos/131532837/shield?branch=master)](https://styleci.io/repos/131532837)
 
 > **Note:** I do not own the Developer Battlerite API.
 > I do not work with Stunlock Studios.
