@@ -2,7 +2,7 @@
 
 namespace guastallaigor\PhpBattlerite;
 
-use guastallaigor\PhpBattlerite\Exceptions\ConfigFileNotFoundException;
+use Dotenv\Dotenv;
 use Illuminate\Config\Repository;
 
 /**
@@ -21,7 +21,11 @@ class Config
     /**
      * Config file name.
      */
-    private static $configFileName = 'phpbattlerite';
+
+    private static $configFileNames = [
+        'phpbattlerite',
+        'apikey',
+    ];
 
     /**
      * @var \Illuminate\Config\Repository
@@ -30,18 +34,20 @@ class Config
 
     /**
      * Config constructor.
+     * @param string $pathEnvFile
+     * @throws ConfigFileNotFoundException
      */
-    public function __construct()
+    public function __construct($pathEnvFile = __DIR__)
     {
         $configPath = $this->configurationPath();
-
-        $config_file = $configPath.'/'.self::$configFileName.'.php';
-
-        if (!file_exists($config_file)) {
-            throw new ConfigFileNotFoundException();
+        $pathFile = $pathEnvFile;
+        if ($pathEnvFile == __DIR__) {
+            $pathFile = $pathEnvFile . '/../';
         }
-
-        $this->config = new Repository(require $config_file);
+        $this->configurationEnvFile($pathFile);
+        foreach (self::$configFileNames as $configFileName) {
+            $this->setConfig($configPath, $configFileName);
+        }
     }
 
     /**
@@ -71,5 +77,29 @@ class Config
     public function get($key)
     {
         return $this->config->get($key);
+    }
+
+    /**
+     * @param $pathFile
+     */
+    private function configurationEnvFile($pathFile)
+    {
+        $dotenv = new Dotenv($pathFile);
+        $dotenv->load();
+    }
+
+    /**
+     * @param $configPath
+     * @throws ConfigFileNotFoundException
+     */
+    public function setConfig($configPath, $configFileName)
+    {
+        $config_file = $configPath . '/' . $configFileName . '.php';
+
+        if (!file_exists($config_file)) {
+            throw new ConfigFileNotFoundException();
+        }
+
+        $this->config = new Repository(require $config_file);
     }
 }
