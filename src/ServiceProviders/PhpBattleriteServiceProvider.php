@@ -2,24 +2,23 @@
 
 namespace guastallaigor\PhpBattlerite\ServiceProviders;
 
-use Illuminate\Support\ServiceProvider;
 use guastallaigor\PhpBattlerite\Facades\PhpBattlerite;
 use guastallaigor\PhpBattlerite\Main;
+use Illuminate\Support\ServiceProvider;
 
- /**
-  * PHP-Battlerite easy API
-  *
-  * @category  Games
-  * @package   ServiceProviders
-  * MainServiceProvider class for this package
-  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
-  * @copyright 2018 PHP Battlerite
-  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
-  * @link      https://github.com/guastallaigor/php-battlerite
-  */
+/**
+ * PHP-Battlerite easy API.
+ *
+ * @category  Games
+ *
+ * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+ * @copyright 2018 PHP Battlerite
+ * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+ *
+ * @link      https://github.com/guastallaigor/php-battlerite
+ */
 class PhpBattleriteServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -28,17 +27,12 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Boot the package.
+     * Publish the Config file from the Package to the App directory.
      *
      * @return void
      */
     public function boot()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Publish the Config file from the Package to the App directory
-        |--------------------------------------------------------------------------
-        */
         $this->configPublisher();
     }
 
@@ -50,16 +44,12 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     public function register()
     {
         /*
-        |--------------------------------------------------------------------------
-        | Implementation Bindings
-        |--------------------------------------------------------------------------
+        * Implementation Bindings.
         */
         $this->implementationBindings();
 
         /*
-        |--------------------------------------------------------------------------
-        | Facade Bindings
-        |--------------------------------------------------------------------------
+        * Facade Bindings.
         */
         $this->facadeBindings();
     }
@@ -77,7 +67,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish the Config file from the Package to the App directory
+     * Publish the Config file from the Package to the App directory.
      *
      * @return void
      */
@@ -86,8 +76,7 @@ class PhpBattleriteServiceProvider extends ServiceProvider
         // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
         $this->publishes(
             [
-                __DIR__ . '/Config/phpbattlerite.php' =>
-                    config_path('phpbattlerite.php')
+                __DIR__.'/Config/phpbattlerite.php' => config_path('phpbattlerite.php'),
             ]
         );
     }

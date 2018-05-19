@@ -4,17 +4,17 @@ namespace guastallaigor\PhpBattlerite;
 
 use GuzzleHttp\Exception\RequestException;
 
- /**
-  * PHP-Battlerite easy API
-  *
-  * @category  Games
-  * @package   src
-  * Main class
-  * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
-  * @copyright 2018 PHP Battlerite
-  * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
-  * @link      https://github.com/guastallaigor/php-battlerite
-  */
+/**
+ * PHP-Battlerite easy API.
+ *
+ * @category  Games
+ *
+ * @author    Igor Guastalla de Lima  <limaguastallaigor@gmail.com>
+ * @copyright 2018 PHP Battlerite
+ * @license   MIT https://github.com/guastallaigor/php-battlerite/blob/master/LICENSE
+ *
+ * @link      https://github.com/guastallaigor/php-battlerite
+ */
 class Main
 {
     /**
@@ -32,7 +32,7 @@ class Main
     private $apiKey;
 
     /**
-     * @var  \guastallaigor\PhpBattlerite\Config
+     * @var \guastallaigor\PhpBattlerite\Config
      */
     private $config;
 
@@ -64,7 +64,7 @@ class Main
      *
      * @param string $method
      * @param string $request
-     * @param array $filter
+     * @param array  $filter
      *
      * @return array
      */
@@ -72,10 +72,10 @@ class Main
     {
         $apiUrl = 'https://api.dc01.gamelockerapp.com/';
         $shardsGlobal = 'shards/global/';
-        $url =  $apiUrl . ($global ?  $shardsGlobal . $request : $request);
+        $url = $apiUrl.($global ? $shardsGlobal.$request : $request);
         $header = [
-            'Authorization' => 'Bearer ' . $this->apiKey,
-            'Accept' =>  'application/vnd.api+json'
+            'Authorization' => 'Bearer '.$this->apiKey,
+            'Accept'        => 'application/vnd.api+json',
         ];
 
         try {
@@ -83,7 +83,7 @@ class Main
                 $method,
                 $url,
                 [
-                    'query' => $filter,
+                    'query'   => $filter,
                     'headers' => $header,
                 ]
             );
@@ -105,7 +105,7 @@ class Main
      */
     public function getPlayer($id)
     {
-        return $this->sendRequest('GET', 'players/' . $id);
+        return $this->sendRequest('GET', 'players/'.$id);
     }
 
     /**
@@ -118,19 +118,21 @@ class Main
      */
     public function getPlayers($ids, $type = 'playerIds')
     {
-        $filter = ['filter['. $type .']' => $ids];
+        $filter = ['filter['.$type.']' => $ids];
+
         return $this->sendRequest('GET', 'players', $filter);
     }
 
     /**
      * Get a collection of teams.
      *
-     * @param array $filter
+     * @param array $filters
      *
      * @return array
      */
     public function getTeams($filter)
     {
+        // need work
         return $this->sendRequest('GET', 'teams', $filter);
     }
 
@@ -144,12 +146,27 @@ class Main
         return $this->sendRequest('GET', 'status', [], false);
     }
 
-    public function getTelemetry()
+    /**
+     * Get all the telemetry data.
+     *
+     * @param array $filters
+     *
+     * @return array
+     */
+    public function getMatches($filters)
     {
-        $response = $this->sendRequest('GET', 'matches');
-        // need work
+        $formattedFilter = [];
+        foreach ($filters as $key => $value) {
+            if ($key === 'offset' || $key === 'limit') {
+                $formattedFilter['page['.$key.']'] = $value;
+            } elseif ($key === 'sort') {
+                $formattedFilter['sort'] = $value;
+            } else {
+                $formattedFilter['filter['.$key.']'] = $value;
+            }
+        }
 
-        return $response;
+        return $this->sendRequest('GET', 'matches', $formattedFilter);
     }
 
     /**
@@ -157,15 +174,13 @@ class Main
      *
      * @param RequestException $error
      *
-     * @return void
+     * @return array
      */
     protected function statusCodeHandling($error)
     {
-        $response = [
+        return [
             'statuscode' => $error->getResponse()->getStatusCode(),
-            'error' => $error->getResponse()->getBody()->getContents(),
+            'error'      => $error->getResponse()->getBody()->getContents(),
         ];
-
-        return $response;
     }
 }
